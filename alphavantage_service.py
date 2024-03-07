@@ -15,10 +15,10 @@ def get_price(ticker):
 
 # Function for fetching historical stock data
 def historical_prices(ticker):
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=IDNUWBH3517E0U6J'
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=IDNUWBH3517E0U6J'
     r = requests.get(url)
     historicalprices = r.json()
-    historicalprices = timeseries['Global Quote']['02. open']
+    historicalprices = historicalprices['Global Quote']['02. open']
     
     return historicalprices
 
