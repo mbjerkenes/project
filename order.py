@@ -1,14 +1,29 @@
-#Order
 class Order:
-    def __init__(self, user, order_type, symbol, quantity, price=None):
+    def __init__(self, user, symbol, quantity, price=None):
         self.user = user
-        self.order_type = order_type  # 'buy', 'sell', 'limit', 'stop'
         self.symbol = symbol
         self.quantity = quantity
         self.price = price  # For limit and stop orders
+        self.order_type = None
+
+    def prompt_order_type(self):
+        print("Choose the order type:")
+        print("1. Buy")
+        print("2. Sell")
+        choice = input("Enter your choice (1/2): ")
+        if choice == "1":
+            self.order_type = "buy"
+        elif choice == "2":
+            self.order_type = "sell"
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+            self.prompt_order_type()
 
     def execute(self):
-        if self.order_type == 'buy':
+        if self.order_type is None:
+            self.prompt_order_type()
+            self.execute()
+        elif self.order_type == 'buy':
             self.buy()
         elif self.order_type == 'sell':
             self.sell()
@@ -52,4 +67,21 @@ class Order:
         # Implement stop order logic here
         pass
 
-    #To implement: get current stock price
+    def get_current_stock_price(self):
+        # Implement a function to get current stock price
+        # For now, returning a random price for demonstration purposes
+        import random
+        return random.randint(50, 200)
+
+class User:
+    def __init__(self, name, balance, currency="USD"):
+        self.name = name
+        self.balance = balance
+        self.currency = currency
+        self.portfolio = {}
+        self.transaction_history = []
+
+# Example usage:
+user = User("Sample User", 1000)  # Adjusted the initial balance to 1000
+order = Order(user, 'AAPL', 1)  # Buying 10 shares of AAPL
+order.execute()
