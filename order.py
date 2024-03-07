@@ -83,5 +83,5 @@ class User:
 
 # Example usage:
 user = User("Sample User", 1000)  # Adjusted the initial balance to 1000
-order = Order(user, 'AAPL', 1)  # Buying 10 shares of AAPL
+order = Order(user, 'AAPL', 1)  # Buying shares of AAPL
 order.execute()
