@@ -1,0 +1,88 @@
+To create a Python program that meets your functional and technical requirements, we'll need to break down the task into manageable components and outline how these components can be structured and implemented. Given the complexity of the project, I'll guide you through setting up the basic structure and give you an idea of how to expand it with more features as you go.
+
+Initial Setup
+Git and Virtual Environment:
+
+Initialize a Git repository for version control.
+Each team member should create their own virtual environment (python -m venv venv) and activate it.
+The requirements.txt file should list all necessary packages, including pandas and any other libraries you might need for web development, data handling, or accessing the Alpha Vantage API.
+Project Structure:
+
+Your project directory could be structured as follows:
+bash
+Copy code
+/your_project
+  /venv
+  /src
+    __init__.py
+    main.py
+    /models
+      __init__.py
+      user.py
+      order.py
+      portfolio.py
+      stock.py
+    /services
+      __init__.py
+      alphavantage_service.py
+      currency_service.py
+  /tests
+  requirements.txt
+  .gitignore
+Alpha Vantage API Integration:
+
+Use the requests library to fetch stock prices from Alpha Vantage.
+Store the API key in an environment variable for security.
+The example notebook you have should guide you on how to use this service. Adapt its logic into your alphavantage_service.py.
+Data Handling with Pandas:
+
+Use Pandas DataFrames to manage and manipulate the stock prices data you retrieve.
+Implementation Steps
+User Profile:
+
+Create a User class in user.py to manage user details, including their cash balance and currency.
+Orders and Portfolio:
+
+Define an Order class in order.py with types of orders (buy, sell, limit, etc.).
+The Portfolio class in portfolio.py can track a user's holdings and the performance over time.
+Stock and Currency Data:
+
+Implement a Stock class in stock.py for handling stock data.
+For currency, since it's represented as integers in thousands of cents, ensure all currency-related calculations adhere to this format.
+Services for Data Retrieval:
+
+alphavantage_service.py: Implements fetching stock prices.
+currency_service.py: Could be used for handling currency conversion rates (possibly from another API).
+Main Script:
+
+main.py will serve as the entry point of your program, integrating all components and handling user interactions. Initially, focus on CLI interactions before moving on to a GUI.
+GUI and Further Features:
+
+Once the core functionality is in place, you can start working on a GUI (consider Flask or Django for a web interface).
+Implement additional features like searching for funds, graphical reporting, and handling multiple users and currencies as time permits.
+Example Code Snippet
+Below is an example snippet for the User class to get you started:
+
+python
+Copy code
+class User:
+    def __init__(self, username, initial_balance=0, currency='USD'):
+        self.username = username
+        self.balance = initial_balance  # Balance in thousands of cents
+        self.currency = currency
+        self.portfolio = {}  # This will hold stock symbols and quantities
+
+    def buy_stock(self, symbol, quantity, price_per_stock):
+        total_cost = quantity * price_per_stock
+        if self.balance >= total_cost:
+            self.balance -= total_cost
+            if symbol in self.portfolio:
+                self.portfolio[symbol] += quantity
+            else:
+                self.portfolio[symbol] = quantity
+            return True
+        else:
+            return False
+This is a starting point. As you develop the project, you'll need to add methods for selling stocks, handling different order types, and integrating with the Alpha Vantage API to get real stock prices.
+
+Remember, this is a complex project that will require iterative development, testing, and collaboration among your team members. Start with the basics, and gradually build up the functionality, making sure to test each component thoroughly before moving on to the next.
