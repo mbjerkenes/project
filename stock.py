@@ -11,24 +11,25 @@ class Stock:
 
     def fetch_stock_data(self):
         try:
-            new_price = api.get_price(self.symbol)
-            if new_price is not None:
-                self.price = new_price
-                print(f"Stock data updated for {self.symbol}: Price = {self.price}")
+            # Use the function from the API module to get company information
+            company_info = api.company_info(self.symbol)
+            if 'Name' in company_info:
+                self.name = company_info['Name']
             else:
-                print(f"Error: Unable to fetch stock data for {self.symbol}")
+                print(f"Error: Unable to fetch company information for {self.symbol}")
+            
+            # Use the function from the API module to get stock price
+            self.price = api.get_price(self.symbol)
+            print(f"Stock data updated for {self.symbol}: Name = {self.name}, Price = {self.price}")
         except Exception as e:
             print(f"Error fetching stock data: {e}")
-
-    def update_price(self, new_price):
-        self.price = new_price
 
 # Example usage:
 
 # Create an instance of a stock
-#apple_stock = Stock("AAPL", "Apple Inc.", 150.25)
+#apple_stock = Stock("AAPL")
 
-# Fetch stock data from the API and update the price
+# Fetch stock data from the API and update the name and price
 #apple_stock.fetch_stock_data()
 
 # Display updated stock information
