@@ -12,7 +12,7 @@ class User:
         print(f"Current balance ({self.currency}): {self.balance}")
 
     # Transfer money into the account
-    def add_money(self, int(amount)):
+    def add_money(self, int: amount):
         if amount <= 0:
             print("Enter a valid amount")
         else:
