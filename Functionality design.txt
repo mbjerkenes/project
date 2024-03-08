@@ -1,0 +1,14 @@
+# Script for functionality functions
+
+# Initiate program
+    # 2 choices (My profile, Investment)
+
+    # My profile
+        # Add money
+        # Balance
+        # My portfolio
+
+    # Investment
+        # Search stocks
+            # Buy
+            # Sell
