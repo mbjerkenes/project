@@ -27,7 +27,7 @@ class User:
         else:
             self.balance += amount
             print(f"{self.currency} {amount} added to balance. New balance: {self.currency}: {self.balance}")
-
+    
 # Initialize test for Marius - starting balance 100 (USD is set a only currency for now)
 user = User("Marius", 100)
 
