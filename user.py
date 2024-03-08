@@ -10,15 +10,6 @@ class User:
     # Show the current balance
     def display_balance(self):
         print(f"Current balance ({self.currency}): {self.balance}")
-    
-    # Show the current portfolio
-    def display_portfolio(self):
-        if not self.portfolio:
-            print("Portfolio is empty")
-        else:
-            print("Portfolio")
-            for stock, quantity in self.portfolio.items():
-                print(f"{stock}: {quantity}")
 
     # Transfer money into the account
     def add_money(self, amount):
