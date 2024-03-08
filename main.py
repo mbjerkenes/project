@@ -23,8 +23,8 @@ def main():
         startingbalance = input("How much money do you want to add?")
         User(new_user, startingbalance)
     
-    username = input("Enter your username: ")
-    user = User(username)
+    #username = input("Enter your username: ")
+    #user = User(username)
 
     # Allow the user to buy and sell stocks
     while True:
