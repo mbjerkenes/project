@@ -5,7 +5,7 @@ class User:
         self.balance = balance
         self.currency = currency
         self.portfolio = {}
-        self.transaction_history = []
+        self.transaction_history = TransactionHistory() #class from transactions file
     
     # Show the current balance
     def display_balance(self):
