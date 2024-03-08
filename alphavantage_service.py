@@ -1,8 +1,24 @@
 # API
 import requests
 
+# Function for stock search
+def search(string):
+    url = f'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={string}&apikey=IDNUWBH3517E0U6J'
+    r = requests.get(url)
+    search = r.json()
 
-# Function for fetching stock price
+    return search
+
+# Function for getting company fundamentals
+def company_info(ticker):
+    url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={ticker}&apikey=IDNUWBH3517E0U6J'
+    r = requests.get(url)
+    companyinfo = r.json()
+
+    return companyinfo
+
+
+# Function to get stock price
 def get_price(ticker):
     url = f'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={ticker}&apikey=IDNUWBH3517E0U6J'
     r = requests.get(url)
@@ -10,7 +26,6 @@ def get_price(ticker):
     quote = quote['Global Quote']['02. open']
     
     return quote
-
 
 
 # Function for fetching historical stock data
@@ -21,8 +36,6 @@ def historical_prices(ticker):
     historicalprices = historicalprices['Global Quote']['02. open']
     
     return historicalprices
-
-
 
 
 
