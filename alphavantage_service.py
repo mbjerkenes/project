@@ -8,8 +8,9 @@ def search(string):
     url = f'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={string}&apikey={APIKEY}'
     r = requests.get(url)
     search = r.json()
-
-    return search
+    bestmatches = search['bestMatches']
+    
+    return bestmatches
 
 # Function for getting company fundamentals
 def company_info(ticker):
