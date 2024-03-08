@@ -33,6 +33,7 @@ def main():
         print("2. Investment")
         choice = input("Enter your choice: ")
         
+        # Split into separate function
         if choice == "1":
             # Display the profile menu and prompt the user to choose an option
             print("1. Add money")
