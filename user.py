@@ -1,4 +1,5 @@
 # User
+from transactions import TransactionHistory
 class User:
     def __init__(self, name, balance, currency = "USD"):
         self.name = name
