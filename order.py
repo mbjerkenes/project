@@ -1,8 +1,9 @@
 from stock import Stock
+from user import User
 
 class Order:
-    def __init__(self, user, ticker, quantity, price=None):
-        self.user = user
+    def __init__(self, User, ticker, quantity, price=None):
+        self.user = User
         self.ticker = ticker
         self.quantity = quantity
         self.price = price  # For limit and stop orders

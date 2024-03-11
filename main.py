@@ -19,9 +19,9 @@ def main():
     
     choice = input("Enter your choice:")
     if choice == "1":
-        new_user = input("What is your name?")
+        username = input("What is your name?")
         startingbalance = input("How much money do you want to add?")
-        User(new_user, startingbalance)
+        user = User(username, startingbalance)
     
         
         #user = User(username)
@@ -34,6 +34,8 @@ def main():
     # Allow the user to buy and sell stocks
     while True:
         # Display the main menu and prompt the user to choose an option
+        print(f"Welcome {username}")
+        print("Menu:")
         print("1. My profile")
         print("2. Investment")
         choice = input("Enter your choice: ")
@@ -53,7 +55,7 @@ def main():
                 print(f"Added {amount} to your balance.")
             elif profile_choice == "2":
                 # Display the user's current balance
-                print(f"Your balance is {user.balance}.")
+                print(f"Your balance is {User.balance}.")
             elif profile_choice == "3":
                 # Display the user's portfolio
                 #User.display_portfolio(user)
@@ -63,31 +65,37 @@ def main():
             # Display the investment menu and prompt the user to choose an option
             print("Search stocks")
             stocksearch = input("Search: ")
-            bestmatches = search(stocksearch)
-            searchoutput = [match['2. name'] for match in bestmatches]
+            bestmatches = search(stocksearch)['bestMatches']
+            searchoutput = [match['1. symbol'] for match in bestmatches]
             print(searchoutput)
             choosestock = input("Choose stock (1 to 3): ")
             
             if choosestock == "1":
-                stock_name = searchoutput[0]
-                stock_symbol = bestmatches[0]['Symbol']
+                stock_symbol = searchoutput[0]
+                stock_name = bestmatches[0]['2. name']
             elif choosestock == "2":
-                stock_name = searchoutput[1]
-                stock_symbol = bestmatches[1]['Symbol']
+                stock_symbol = searchoutput[1]
+                stock_name = bestmatches[1]['2. name']
             elif choosestock == "3":
-                stock_name = searchoutput[2]
-                stock_symbol = bestmatches[2]['Symbol']
+                stock_symbol = searchoutput[2]
+                stock_name = bestmatches[2]['2. name']
             else:
                 print("Invalid input: Please enter the number of the stock.")
-
+            stock_price = get_price(stock_symbol)
+            stock = Stock(stock_symbol, stock_name, stock_price)
+            print(f"You have chosen {stock_name} with ticker {stock_symbol}")
+            print(f"Price is currently at USD {stock.price}")
             print("Stock options:")
             print("1. Buy")
             print("2. Sell")
             choice = input("Enter your choice:")
 
             if choice == "1":
-                print("Your balance is currently:" + User.display_balance)
-                Order.buy()
+                print(f"Your balance is currently: " + user.balance)
+                quantity = input(f"How many shares do you want to buy?")
+                order = Order(user, stock_symbol, quantity, stock_price)
+                print(f"Order: {order.ticker}: {order.quantity} @ {stock_price} for a total sum of USD" + quantity*stock_price)
+                order.buy()
 
 
         else: print("Invalid input: Choose 1 or 2.")
