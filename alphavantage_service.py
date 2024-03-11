@@ -1,7 +1,7 @@
 # API
 import requests
 
-APIKEY = 'IDNUWBH3517E0U6J'
+APIKEY = '12KH3UIJOSJMJ28S'
 
 # Function for stock search
 def search(string):

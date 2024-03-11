@@ -94,7 +94,8 @@ def main():
                 print(f"Your balance is currently: " + user.balance)
                 quantity = input(f"How many shares do you want to buy?")
                 order = Order(user, stock_symbol, quantity, stock_price)
-                print(f"Order: {order.ticker}: {order.quantity} @ {stock_price} for a total sum of USD" + quantity*stock_price)
+                print(order.__dict__)
+                print(f"Order: {order.ticker}: {order.quantity} @ {order.price} for a total sum of USD" + quantity*stock_price)
                 order.buy()
 
 
