@@ -1,8 +1,8 @@
 # Transactions ledger
-from order import Order
 
 class Transaction:
-    def __init__(self, ticker, quantity, price, transaction_type):
+    def __init__(self, user, ticker, quantity, price, transaction_type):
+        self.user = user
         self.ticker = ticker
         self.quantity = quantity
         self.price = price
@@ -30,9 +30,9 @@ class TransactionHistory:
                 print(transaction)
 
 # Create some sample transactions
-transaction1 = Transaction("AAPL", 10, 150, "buy")
-transaction2 = Transaction("GOOGL", 5, 1000, "sell")
-transaction3 = Transaction("USD", 0, 500, "deposit")
+transaction1 = Transaction("Marius", "AAPL", 10, 150, "buy")
+transaction2 = Transaction("Mikkel", "GOOGL", 5, 1000, "sell")
+transaction3 = Transaction("Natia", "USD", 0, 500, "deposit")
 
 # Initialize a TransactionHistory instance
 transaction_history = TransactionHistory()
