@@ -17,5 +17,19 @@ class User:
             print("Enter a valid amount")
         else:
             self.balance += amount
-            #self.transaction_history.add_transaction(Transaction(self.currency, amount, 0, "deposit"))
-           #print(f"{self.currency} {amount} added to balance. New balance: {self.currency}: {self.balance}")
+            print(f"{self.currency} {amount} added to balance. New balance: {self.currency}: {self.balance}")
+   
+       # Show the current portfolio
+    def display_portfolio(self):
+        if not self.portfolio:
+            print("Portfolio is empty")
+        else:
+            print("Portfolio")
+            for stock, quantity in self.portfolio.items():
+                print(f"{stock}: {quantity}")         
+
+# Initialize test for Marius - starting balance 100 (USD is set a only currency for now)
+user = User("Marius", 100)
+
+# Display the current balance
+user.display_balance()
