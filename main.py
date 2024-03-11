@@ -19,7 +19,7 @@ def main():
     
     choice = input("Enter your choice:")
     if choice == "1":
-        new_user = input("What is your name?")
+        new_user = float(input("What is your name?"))
         startingbalance = input("How much money do you want to add?")
         User(new_user, startingbalance)
     
