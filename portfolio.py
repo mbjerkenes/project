@@ -1,7 +1,7 @@
 # Portfolio
 # Still need to add task of calling to displaying portfolio
- #def display_portfolio(self):
-  #      self.portfolio.display_portfolio()
+#def display_portfolio(self):
+  #  self.portfolio.display_portfolio()
 class Portfolio:
     def __init__(self):
         self.stocks = {}
