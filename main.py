@@ -58,7 +58,7 @@ def main():
                 print(f"Your balance is {User.balance}.")
             elif profile_choice == "3":
                 # Display the user's portfolio
-                #User.display_portfolio(user)
+                User.display_portfolio(user)
                 continue
 
         elif choice == "2":
