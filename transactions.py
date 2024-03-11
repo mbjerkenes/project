@@ -1,11 +1,19 @@
 # Transactions ledger
+from order import Order
+
 class Transaction:
     def __init__(self, ticker, quantity, price, transaction_type):
         self.ticker = ticker
         self.quantity = quantity
         self.price = price
         self.transaction_type = transaction_type
-        self.total = quantity * price if transaction_type == "buy" else -quantity * price
+        self.total = quantity * price if transaction_type in ["buy", "sell"] else price
+    
+    def __str__(self):
+        if self.transaction_type in ["buy", "sell"]:
+            return f"{self.transaction_typet.title()} {self.quantity} of {self.ticker} at {self.price}. Total: {self.total}"
+        else:
+            return f"{self.transaction_type.title()} transaction: {self.total}"
 
 class TransactionHistory:
     def __init__(self):
