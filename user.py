@@ -3,7 +3,7 @@ from transactions import TransactionHistory
 class User:
     def __init__(self, name, balance, currency = "USD"):
         self.name = name
-        self.balance = balance
+        self.balance = float(balance)
         self.currency = currency
         self.portfolio = {}
         self.transaction_history = TransactionHistory() #class from transactions file
