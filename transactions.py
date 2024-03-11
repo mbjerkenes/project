@@ -11,9 +11,9 @@ class Transaction:
     
     def __str__(self):
         if self.transaction_type in ["buy", "sell"]:
-            return f"{self.transaction_type.title()} {self.quantity} of {self.ticker} at {self.price}. Total: {self.total}"
+            return f"{self.user.name} {self.transaction_type.title()} {self.quantity} of {self.ticker} at {self.price}. Total: {self.total}"
         else:
-            return f"{self.transaction_type.title()} transaction: {self.total}"
+            return f"{self.user.name} {self.transaction_type.title()} transaction: {self.total}"
 
 class TransactionHistory:
     def __init__(self):
@@ -28,19 +28,3 @@ class TransactionHistory:
         else:
             for transaction in self.transactions:
                 print(transaction)
-
-# Create some sample transactions
-transaction1 = Transaction("Marius", "AAPL", 10, 150, "buy")
-transaction2 = Transaction("Mikkel", "GOOGL", 5, 1000, "sell")
-transaction3 = Transaction("Natia", "USD", 0, 500, "deposit")
-
-# Initialize a TransactionHistory instance
-transaction_history = TransactionHistory()
-
-# Add the transactions to the transaction history
-transaction_history.add_transaction(transaction1)
-transaction_history.add_transaction(transaction2)
-transaction_history.add_transaction(transaction3)
-
-# Display all transactions
-transaction_history.display_transactions()
