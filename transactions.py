@@ -1,9 +1,9 @@
 # Transactions ledger
-from user import User
+
 
 class Transaction:
     def __init__(self, user, ticker, quantity, price, transaction_type):
-        self.user = User
+        self.user = user
         self.ticker = ticker
         self.quantity = quantity
         self.price = price

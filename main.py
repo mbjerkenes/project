@@ -8,6 +8,7 @@ from user import User
 from order import Order
 from alphavantage_service import get_price, search
 from stock import Stock
+from portfolio import Portfolio
 
 def main():
     # Display the available stocks and their prices
@@ -55,7 +56,7 @@ def main():
                 print(f"Added {amount} to your balance.")
             elif profile_choice == "2":
                 # Display the user's current balance
-                print(f"Your balance is {User.balance}.")
+                print(f"Your balance is {user.balance}.")
             elif profile_choice == "3":
                 # Display the user's portfolio
                 #User.display_portfolio(user)
@@ -65,7 +66,7 @@ def main():
             # Display the investment menu and prompt the user to choose an option
             print("Search stocks")
             stocksearch = input("Search: ")
-            bestmatches = search(stocksearch)['bestMatches']
+            bestmatches = search(stocksearch)
             searchoutput = [match['1. symbol'] for match in bestmatches]
             print(searchoutput)
             choosestock = input("Choose stock (1 to 3): ")
@@ -91,12 +92,13 @@ def main():
             choice = input("Enter your choice:")
 
             if choice == "1":
-                print(f"Your balance is currently: " + user.balance)
+                print(f"Your balance is currently: " + str(user.balance))
                 quantity = input(f"How many shares do you want to buy?")
                 order = Order(user, stock_symbol, quantity, stock_price)
                 print(order.__dict__)
-                print(f"Order: {order.ticker}: {order.quantity} @ {order.price} for a total sum of USD" + quantity*stock_price)
-                order.buy()
+                order_sum = int(quantity)*int(stock_price)
+                print(f"Order: {order.ticker}: {order.quantity} @ {order.price} for a total sum of USD" + str(order_sum))
+                order.buy(stock_name, stock_price)
 
 
         else: print("Invalid input: Choose 1 or 2.")
