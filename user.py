@@ -21,4 +21,3 @@ class User:
             self.balance += amount
             self.transaction_history.add_transaction(Transaction(self.currency, amount, 0, "deposit"))
             print(f"{self.currency} {amount} added to balance. New balance: {self.currency}: {self.balance}")
-
