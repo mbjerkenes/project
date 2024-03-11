@@ -13,3 +13,6 @@ class Portfolio:
             print("Portfolio:")
             for stock, quantity in self.stocks.items():
                 print(f"{stock}: {quantity}")
+
+#test
+                
