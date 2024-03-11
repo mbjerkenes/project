@@ -1,5 +1,5 @@
 # User
-from transactions import TransactionHistory
+from transactions import TransactionHistory, Transaction
 class User:
     def __init__(self, name, balance, currency = "USD"):
         self.name = name
@@ -18,6 +18,7 @@ class User:
             print("Enter a valid amount")
         else:
             self.balance += amount
+            self.transaction_history.add_transaction(Transaction(self.currency, amount, 0, "deposit"))
             print(f"{self.currency} {amount} added to balance. New balance: {self.currency}: {self.balance}")
     
 # Initialize test for Marius - starting balance 100 (USD is set a only currency for now)
