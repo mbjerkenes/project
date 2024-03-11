@@ -1,4 +1,5 @@
 # Transactions ledger
+from order import Order
 
 class Transaction:
     def __init__(self, user, ticker, quantity, price, transaction_type):
