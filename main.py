@@ -23,8 +23,13 @@ def main():
         startingbalance = input("How much money do you want to add?")
         User(new_user, startingbalance)
     
-    #username = input("Enter your username: ")
-    #user = User(username)
+        
+        #user = User(username)
+        
+    elif choice == "2":
+        username = input("Enter your username: ")
+            
+        
 
     # Allow the user to buy and sell stocks
     while True:
@@ -51,21 +56,45 @@ def main():
                 print(f"Your balance is {user.balance}.")
             elif profile_choice == "3":
                 # Display the user's portfolio
-                User.display_portfolio(user)
+                #User.display_portfolio(user)
+                continue
 
         elif choice == "2":
             # Display the investment menu and prompt the user to choose an option
-            print("1. Search stocks")
-            stocksearch = input("Enter your choice: ")
+            print("Search stocks")
+            stocksearch = input("Search: ")
             bestmatches = search(stocksearch)
             searchoutput = [match['2. name'] for match in bestmatches]
             print(searchoutput)
-            choosestock = input("Choose stock: ")
+            choosestock = input("Choose stock (1 to 3): ")
             
+            if choosestock == "1":
+                stock_name = searchoutput[0]
+                stock_symbol = bestmatches[0]['Symbol']
+            elif choosestock == "2":
+                stock_name = searchoutput[1]
+                stock_symbol = bestmatches[1]['Symbol']
+            elif choosestock == "3":
+                stock_name = searchoutput[2]
+                stock_symbol = bestmatches[2]['Symbol']
+            else:
+                print("Invalid input: Please enter the number of the stock.")
 
-            if investment_choice == "1":
+            print("Stock options:")
+            print("1. Buy")
+            print("2. Sell")
+            choice = input("Enter your choice:")
+
+            if choice == "1":
+                print("Your balance is currently:" + User.display_balance)
+                Order.buy()
+
+
+        else: print("Invalid input: Choose 1 or 2.")
+
+"""if investment_choice == "1":
                 # Prompt the user to enter a stock symbol and display the stock information
-                stock_symbol = input("Enter the stock symbol: ")
+                #stock_symbol = input("Enter the stock symbol: ")
                 stock_info = Stock.fetch_stock_data(stock_symbol)
                 print(f"{stock_symbol}: {stock_info['price']}")
 
@@ -76,7 +105,7 @@ def main():
                     Order.buy(user, ticker, quantity)
                 elif action == "sell":
                     quantity = int(input("Enter the quantity: "))
-                    Order.sell(user, ticker)
+                    Order.sell(user, ticker)"""
 
     # Display the user's portfolio
     # display_portfolio(user)
